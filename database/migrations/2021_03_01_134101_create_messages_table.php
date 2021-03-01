@@ -20,8 +20,8 @@ class CreateMessagesTable extends Migration
             $table->unsignedBigInteger('destination_id');
             $table->timestamps();
 
-            $table->foreign('source_id')->references('id')->on('users');
-            $table->foreign('destination_id')->references('id')->on('users');
+            $table->foreign('source_id')->references('id')->on('users')->onDelete('CASCADE');
+            $table->foreign('destination_id')->references('id')->on('users')->onDelete('CASCADE');
         });
     }
 
