@@ -10,4 +10,9 @@ class Message extends Model
         'body',
         'destination_id',
     ];
+
+    public function destination()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
