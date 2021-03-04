@@ -10,10 +10,15 @@ class MessageController extends Controller
 {
     public function index(User $user)
     {
-        $messages = auth()
-            ->user()
-            ->messages()
-            ->where('destination_id', $user->id)
+        $source = auth()->user()->id;
+
+        $send = Message::where('destination_id', $user->id)
+            ->where('source_id', $source);
+
+        $messages = Message::where('destination_id', $source)
+            ->where('source_id', $user->id)
+            ->union($send)
+            ->orderBy('created_at')
             ->get();
 
         return response()->json($messages);
