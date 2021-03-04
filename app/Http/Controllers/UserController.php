@@ -9,7 +9,10 @@ class UserController extends Controller
 {
     public function index()
     {
-        return response()->json(auth()->user());
+        $user = auth()->user();
+        $users = User::where('id', '<>', $user->id)->get();
+
+        return response()->json($users);
     }
 
     public function store(StoreRequest $request)
