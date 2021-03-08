@@ -60,3 +60,66 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+---
+
+## Install <a name = "install"></a>
+
+Instalar Dependências
+```
+composer install
+```
+
+Fazer cópia do arquivo `.env.example` e nomear de `.env`
+```
+cp .env.example .env
+```
+
+Gerar chave
+```
+php artisan key:generate
+```
+
+Gerar secret do JWT
+```
+php artisan jwt:secret
+```
+
+Configurar o banco de dados, crie previamente o banco para essa aplicação e set essas variáveis no arquivo `.evn`
+Recomendo usar mysql
+```
+DB_CONNECTION=
+DB_HOST=
+DB_PORT=
+DB_DATABASE=
+DB_USERNAME=
+DB_PASSWORD=
+```
+
+Configurar variáveis pusher para o real-time
+```
+BROADCAST_DRIVER=pusher
+
+PUSHER_APP_ID=
+PUSHER_APP_KEY=
+PUSHER_APP_SECRET=
+```
+
+Executar as migração
+
+```
+php artisan migrate
+```
+
+Iniciar o servidor
+
+```
+php artisan serve
+```
+
+Startando Socket (em outra instância do terminal)
+
+```
+php artisan websocket:serve
+```
+
